@@ -1,0 +1,12 @@
+{
+  "name": "sing_online",
+  "version": "1.0.0",
+  "description": "sing online project techcollege by michmich16",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "michmich16 aka doctor mp",
+  "license": "ISC"
+}
