@@ -1,10 +1,16 @@
-import http from 'http';
+import express from 'express'
 
+const app = express()
 const port = 3000;
 
-http.createServer((request, response) => {
-    console.log(`Webserver is running now on http://localhost:${port}`);
-	response.writeHead(200, { 'Content-Type': 'text/plain' });
-	response.write('Hello World');
-	response.end();
-}).listen(port)
+app.get('/',(req, res)=>{
+	res.send('Forsiden')
+})
+
+app.get('/about',(req, res)=>{
+	res.send('Om os')
+})
+
+app.listen(port,()=>{
+    console.log(`webserver is running now 0n http://localhost:${port}`);
+})
