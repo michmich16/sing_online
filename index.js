@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { supabase } from './Config/supabase.config.js';
+import SongModel from './Models/song.model.js';
 const app = express()
 
 dotenv.config();
@@ -23,16 +23,16 @@ app.get('/contact',(req, res)=>{
 	res.send('Kontakt os')
 })
 
-app.get('/test', async (req, res)=>{
-	const {data, error} = await supabase
-	.from ('Songs')
-	.select('title')
-	if(error){
-		console.error(error);
-	} else{
-		res.send(data)
-	}
-})
+// app.get('/songs', async (req, res)=>{
+// 	const {data, error} = await supabase
+// 	.from ('Songs')
+// 	.select('title')
+// 	if(error){
+// 		console.error(error);
+// 	} else{
+// 		res.send(data)
+// 	}
+// })
 
 app.listen(port,()=>{
     console.log(`webserver is running now 0n http://localhost:${port}`);
