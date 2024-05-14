@@ -3,8 +3,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+
+const api_key = process.env.APIKEY;
+const port = process.env.PORT;
 const app = express()
-const port = 3000;
 
 app.get('/',(req, res)=>{
 	res.send('Forsiden')
@@ -12,6 +14,10 @@ app.get('/',(req, res)=>{
 
 app.get('/about',(req, res)=>{
 	res.send('Om os')
+})
+
+app.get('/contact',(req, res)=>{
+	res.send('Kontakt os')
 })
 
 app.listen(port,()=>{
