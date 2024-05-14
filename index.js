@@ -1,15 +1,18 @@
-import express from 'express'
+import express from 'express';
 import dotenv from 'dotenv';
+import { supabase } from './Config/supabase.config.js';
+const app = express()
 
 dotenv.config();
 
-
-const api_key = process.env.APIKEY;
 const port = process.env.PORT;
-const app = express()
 
 app.get('/',(req, res)=>{
 	res.send('Forsiden')
+})
+
+app.post('/', (req, res)=>{
+	res.send('Endpoint til POST')
 })
 
 app.get('/about',(req, res)=>{
@@ -18,6 +21,17 @@ app.get('/about',(req, res)=>{
 
 app.get('/contact',(req, res)=>{
 	res.send('Kontakt os')
+})
+
+app.get('/test', async (req, res)=>{
+	const {data, error} = await supabase
+	.from ('Songs')
+	.select('title')
+	if(error){
+		console.error(error);
+	} else{
+		res.send(data)
+	}
 })
 
 app.listen(port,()=>{
