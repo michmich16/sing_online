@@ -1,0 +1,23 @@
+{
+  "name": "sing_online",
+  "version": "1.0.0",
+  "description": "sing online project techcollege by michmich16",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michmich16/sing_online.git"
+  },
+  "author": "Michael P",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michmich16/sing_online/issues"
+  },
+  "homepage": "https://github.com/michmich16/sing_online#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
