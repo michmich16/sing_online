@@ -1,19 +1,19 @@
-import { supabase } from '../Config/supabase_config.js';
+import { supabase } from '../Config/supabase.config.js';
 
 export default class SongModel {
     static async getAllRecords(){
         try{
             const{data, error} = await supabase
             .from ('Songs')
-            .select('title')
+            .select('id, title, created_at, artists(id, name)')
             if(error){
-                console.error(error);
+                throw new Error(error);
             } else{
                 return data
             }
 
         } catch(error) {
-            console.error('fejl i kald af sangliste');
+            console.error(`Fejl i kald af sangliste: ${error}`);
         }
     }
     static async getRecordByID(){
