@@ -4,7 +4,7 @@ export default class AlbumModel {
     static async getAllRecords() {
         try {
             const { data, error } = await supabase
-                .from('Albums')
+                .from('albums')
                 .select('name, id, title, artists(id, name), release_date')
 
             if(error){
@@ -20,7 +20,7 @@ export default class AlbumModel {
     static async getRecordByID(){
         try{
             const {data, error } = await supabase
-            .from ('Albums')
+            .from ('albums')
             .select('*, artists(id, name)')
             .eq('id',id)
 
