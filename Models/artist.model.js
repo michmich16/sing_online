@@ -1,5 +1,6 @@
 import { supabase } from '../Config/supabase.config.js';
 
+// GET ALL
 export default class ArtistModel {
     static async getAllRecords() {
         try {
@@ -16,7 +17,7 @@ export default class ArtistModel {
             console.error(`Fejl i kald af artists: ${error}`);
         }
     }
-
+    // GET BY ID
     static async getRecordByID() {
         try {
             const { data, error } = await supabase
@@ -33,7 +34,7 @@ export default class ArtistModel {
             console.error(`Fejl i kald af artist-liste: ${error}`);
         }
     }
-
+    // CREATE
     static async createRecord(formdata) {
         try {
             let { data, error } = await supabase
@@ -54,6 +55,7 @@ export default class ArtistModel {
             console.error(`error in create in artistmodel ${error}`);
         }
     }
+    // UPDATE
     static async updateRecord(formdata) {
         // Function scope
         let { data, error } = await supabase
@@ -74,7 +76,7 @@ export default class ArtistModel {
     } catch(error) {
         console.error(`error in update in artistmodel ${error}`);
     }
-// DELETE ARTIST
+    // DELETE ARTIST
     static async deleteRecord(formdata) {
         // Function scope
         let { data, error } = await supabase

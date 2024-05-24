@@ -1,6 +1,7 @@
 import { supabase } from '../Config/supabase.config.js';
 
 export default class SongModel {
+    // GET ALL
     static async getAllRecords() {
         try {
             const { data, error } = await supabase
@@ -16,6 +17,7 @@ export default class SongModel {
             console.error(`Fejl i kald af sangliste: ${error}`);
         }
     }
+    // GET BY ID
     static async getRecordByID(id) {
         try {
             const { data, error } = await supabase
@@ -34,7 +36,7 @@ export default class SongModel {
         }
 
     }
-
+    // CREATE
     static async createRecord(formdata) {
         try {
             const { data, error } = await supabase
@@ -57,6 +59,7 @@ export default class SongModel {
             console.error(`fejl in create in songsmodel: ${error}`);
         }
     }
+    // UPDATE
     static async updateRecord(formdata) {
         // Function scope
         let { data, error } = await supabase
@@ -79,7 +82,7 @@ export default class SongModel {
     } catch(error) {
         console.error(`error in update in songsmodel ${error}`);
     }
-// DELETE SONG
+    // DELETE SONG
     static async deleteRecord(formdata) {
         // Function scope
         let { data, error } = await supabase
