@@ -74,7 +74,19 @@ export default class ArtistModel {
     } catch(error) {
         console.error(`error in update in artistmodel ${error}`);
     }
-
-
+// DELETE ARTIST
+    static async deleteRecord(formdata) {
+        // Function scope
+        let { data, error } = await supabase
+            .from('artists')
+            .delete()
+            .eq('id', formdata.id)
+        if (error) {
+            throw new Error(error.message);
+        }
+        return data
+    } catch(error) {
+        console.error(`error in delete in artistsmodel ${error}`);
+    }
 }
 

@@ -77,5 +77,19 @@ export default class AlbumModel {
     } catch(error) {
         console.error(`error in update in albumsmodel ${error}`);
     }
+    // DELETE ALBUM
+    static async deleteRecord(formdata) {
+        // Function scope
+        let { data, error } = await supabase
+            .from('albums')
+            .delete()
+            .eq('id', formdata.id)
+        if (error) {
+            throw new Error(error.message);
+        }
+        return data
+    } catch(error) {
+        console.error(`error in delete in albumsmodel ${error}`);
+    }
 }
 
