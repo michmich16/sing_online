@@ -24,7 +24,7 @@ ArtistController.put('/artists', async(req, res) => {
 });
 
 // delete
-SongController.delete('/artists', async (req, res) => {
+ArtistController.delete('/artists', async (req, res) => {
     const data = await SongModel.deleteRecord(req.body)
     res.send(data)
 });

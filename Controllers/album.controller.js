@@ -23,7 +23,7 @@ AlbumController.put('/albums', async(req, res) => {
 });
 
 // delete
-SongController.delete('/albums', async (req, res) => {
+AlbumController.delete('/albums', async (req, res) => {
     const data = await SongModel.deleteRecord(req.body)
     res.send(data)
 });
