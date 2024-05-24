@@ -1,12 +1,12 @@
 import express from 'express';
 import AlbumModel from '../Models/album.model.js';
 export const AlbumController=express.Router();
-
+//get all
 AlbumController.get('/albums', async(req, res)=>{
     const data = await AlbumModel.getAllRecords()
     res.send(data)
 });
-
+//get by id
 AlbumController.get('/albums/:id([0-9A-Za-z]*)', async(req, res) =>{
     const data = await AlbumModel.getAllRecords()
     res.send(data)

@@ -7,38 +7,58 @@ export default class ArtistModel {
                 .from('artists')
                 .select('name, id')
 
-            if(error){
+            if (error) {
                 throw new Error(error)
-            } else{
+            } else {
                 return data
             }
-        }catch(error){
+        } catch (error) {
             console.error(`Fejl i kald af artists: ${error}`);
         }
     }
 
-    static async getRecordByID(){
-        try{
-            const {data, error } = await supabase
-            .from ('artists')
-            .select('*')
-            .eq('id',id)
+    static async getRecordByID() {
+        try {
+            const { data, error } = await supabase
+                .from('artists')
+                .select('*')
+                .eq('id', id)
 
-        if(error){
-            throw new Error(error)
-        }else{
-            return data
-        }
-        }catch(error){
+            if (error) {
+                throw new Error(error)
+            } else {
+                return data
+            }
+        } catch (error) {
             console.error(`Fejl i kald af artist-liste: ${error}`);
         }
     }
 
-    static async createRecord(formdata){
-        try{
-            let{data, error} = await supabase
+    static async createRecord(formdata) {
+        try {
+            let { data, error } = await supabase
+                .from('artists')
+                .insert([
+                    {
+                        id: formdata.id,
+                        name: formdata.name,
+                        description: formdata.description,
+                        created_at: formdata.created_at
+                    }
+                ])
+            if (error) {
+                throw new Error(error.message);
+            }
+            return data
+        } catch (error) {
+            console.error(`error in create in artistmodel ${error}`);
+        }
+    }
+    static async updateRecord(formdata) {
+        // Function scope
+        let { data, error } = await supabase
             .from('artists')
-            .insert([
+            .update([
                 {
                     id: formdata.id,
                     name: formdata.name,
@@ -46,13 +66,15 @@ export default class ArtistModel {
                     created_at: formdata.created_at
                 }
             ])
-            if(error){
-                throw new Error(error.message);
-            }
-            return data
-        } catch(error) {
-            console.error(`error in create in artistmodel ${error}`);
+            .eq('id', formdata.id)
+        if (error) {
+            throw new Error(error.message);
         }
+        return data
+    } catch(error) {
+        console.error(`error in update in artistmodel ${error}`);
     }
+
+
 }
 

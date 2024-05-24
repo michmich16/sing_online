@@ -52,8 +52,30 @@ export default class AlbumModel {
             return data
         }
         } catch(error){
-            console.error(`fejl in create in songsmodel: ${error}`);
+            console.error(`fejl in create in albumsmodel: ${error}`);
         }
+    }
+    static async updateRecord(formdata) {
+        // Function scope
+        let { data, error } = await supabase
+            .from('albums')
+            .update([
+                {
+                    id: formdata.id,
+                    created_at: formdata.created_at,
+                    title: formdata.title,
+                    artist_id: formdata.artist_id,
+                    description: formdata.description,
+                    release_date: formdata.release_date
+                }
+            ])
+            .eq('id', formdata.id)
+        if (error) {
+            throw new Error(error.message);
+        }
+        return data
+    } catch(error) {
+        console.error(`error in update in albumsmodel ${error}`);
     }
 }
 

@@ -57,8 +57,31 @@ export default class SongModel {
             console.error(`fejl in create in songsmodel: ${error}`);
         }
     }
-    
+    static async updateRecord(formdata) {
+        // Function scope
+        let { data, error } = await supabase
+            .from('songs')
+            .update([
+                {
+                    id: formdata.id,
+                    title: formdata.title,
+                    content: formdata.content,
+                    lyrics: formdata.content,
+                    artist_id: formdata.artist_id,
+                    created_at: formdata.created_at
+                }
+            ])
+            .eq('id', formdata.id)
+        if (error) {
+            throw new Error(error.message);
+        }
+        return data
+    } catch(error) {
+        console.error(`error in update in songsmodel ${error}`);
+    }
 }
+
+    
 
  
  
